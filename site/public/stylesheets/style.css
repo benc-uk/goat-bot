@@ -1,0 +1,20 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: #
+}
+
+a {
+  color: #00B7FF;
+}
+
+.chat {
+  right:0; 
+  bottom: 0; 
+  position: absolute;
+}
+
+iframe {
+  height: 70vh; 
+  width: 402px
+}

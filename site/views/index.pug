@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  div(class="chat")
+    if token
+      iframe(src='https://webchat.botframework.com/embed/goat-bot-bc?t='+token)
+    else
+      h1(style='color:red') Error fetching bot webchat token! 
+        p #{error}

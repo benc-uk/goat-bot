@@ -1,0 +1,18 @@
+{
+  "name": "goat-bot",
+  "version": "1.0.0",
+  "description": "Goat Bot, all your goat questions answered!",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Ben Coleman",
+  "license": "Apache-2.0",
+  "repository": "http://github",
+  "dependencies": {
+    "botbuilder": "^3.7.0",
+    "restify": "^4.3.0",
+    "dotenv-extended": "^1.0.4",
+    "needle": "^1.4.3"     
+  }
+}
