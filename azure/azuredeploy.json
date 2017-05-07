@@ -120,7 +120,7 @@
                "name": "web",
                "type": "sourcecontrols",
                "dependsOn": [
-                  "[resourceId('Microsoft.Web/Sites', parameters('webSiteName'))]"
+                  "[resourceId('Microsoft.Web/Sites', parameters('botName'))]"
                ],
                "properties": {
                   "RepoUrl": "[variables('repo')]",
