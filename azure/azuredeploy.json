@@ -29,7 +29,8 @@
       "repo": "https://github.com/benc-uk/goat-bot.git",
       "visionApiName": "vision-api",
       "visionApiSku": "S1",
-      "visionApiRegion": "westeurope"
+      "visionApiRegion": "westeurope",
+      "nodeVersion": "6.9.1"
    },
    "resources": [
       {
@@ -61,6 +62,10 @@
                   {
                      "name": "PROJECT",
                      "value": "site"
+                  },
+                  {
+                     "name": "WEBSITE_NODE_DEFAULT_VERSION",
+                     "value": "[variables('nodeVersion')]"
                   }
                ]
             }
@@ -113,6 +118,10 @@
                   {
                      "name": "PROJECT",
                      "value": "bot"
+                  },
+                  {
+                     "name": "WEBSITE_NODE_DEFAULT_VERSION",
+                     "value": "[variables('nodeVersion')]"
                   }
                ]
             }

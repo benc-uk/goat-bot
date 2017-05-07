@@ -34,9 +34,10 @@ block content
   hr
   small Goat Info Central &copy; 2017 Ben Coleman 
     a(href='https://github.com/benc-uk/goat-bot') github
+
   div(class="chat")
     if token
       iframe(src='https://webchat.botframework.com/embed/goat-bot-bc?t='+token)
     else
-      h1(style='color:red') Error fetching bot webchat token! 
+      h3(style='color:red') Error fetching bot webchat token! 
         p #{error}
