@@ -7,13 +7,13 @@
       },
       "botName": {
          "type": "string"
-      },  
+      },
       "botAppId": {
          "type": "string"
-      }, 
+      },
       "botAppPassword": {
          "type": "string"
-      },           
+      },
       "appSizingTier": {
          "type": "string",
          "defaultValue": "B1",
@@ -27,6 +27,8 @@
    "variables": {
       "hostingPlanName": "app-service-plan",
       "repo": "https://github.com/benc-uk/goat-bot.git",
+      "visionApiName": "vision-api",
+      "visionApiSku": "S1",
       "visionApiRegion": "westeurope"
    },
    "resources": [
@@ -61,7 +63,7 @@
                      "value": "site"
                   }
                ]
-            }      
+            }
          },
          "resources": [
             {
@@ -85,7 +87,8 @@
          "name": "[parameters('botName')]",
          "location": "[resourceGroup().location]",
          "dependsOn": [
-            "[concat('Microsoft.Web/serverfarms/', variables('hostingPlanName'))]"
+            "[concat('Microsoft.Web/serverfarms/', variables('hostingPlanName'))]",
+            "[concat('Microsoft.CognitiveServices/accounts', variables('hostingPlanName'))]"
          ],
          "properties": {
             "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
@@ -101,18 +104,18 @@
                   },
                   {
                      "name": "MICROSOFT_VISION_API_KEY",
-                     "value": "32423423"
+                     "value": "[listKeys(resourceId('Microsoft.CognitiveServices/accounts', variables('visionApiName')), '2017-04-18').key1]"
                   },
                   {
                      "name": "MICROSOFT_VISION_API_REGION",
                      "value": "[variables('visionApiRegion')]"
-                  },                                                      
+                  },
                   {
                      "name": "PROJECT",
                      "value": "bot"
                   }
                ]
-            }      
+            }
          },
          "resources": [
             {
@@ -129,7 +132,17 @@
                }
             }
          ]
-      }      
+      },
+      {
+         "name": "[variables('visionApiName')]",
+         "type": "Microsoft.CognitiveServices/accounts",
+         "apiVersion": "2017-04-18",
+         "sku": {
+            "name": "[variables('visionApiSku')]"
+         },
+         "kind": "ComputerVision",
+         "location": "[variables('visionApiRegion')]"
+      }
    ],
    "outputs": {
       "siteUrl": {
@@ -139,6 +152,6 @@
       "botEndpoint": {
          "type": "string",
          "value": "[concat(reference(parameters('botName')).hostNames[0], '/api/messages')]"
-      }      
+      }
    }
 }
