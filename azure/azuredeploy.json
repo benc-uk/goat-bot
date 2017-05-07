@@ -60,6 +60,10 @@
                      "value": "!changeme!"
                   },
                   {
+                     "name": "BOT_HANDLE",
+                     "value": "!changeme!"
+                  },
+                  {
                      "name": "PROJECT",
                      "value": "site"
                   },
