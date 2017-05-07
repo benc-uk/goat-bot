@@ -1,0 +1,144 @@
+{
+   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+   "contentVersion": "1.0.0.0",
+   "parameters": {
+      "webSiteName": {
+         "type": "string"
+      },
+      "botName": {
+         "type": "string"
+      },  
+      "botAppId": {
+         "type": "string"
+      }, 
+      "botAppPassword": {
+         "type": "string"
+      },           
+      "appSizingTier": {
+         "type": "string",
+         "defaultValue": "B1",
+         "allowedValues": [
+            "B1",
+            "B2",
+            "B3"
+         ]
+      }
+   },
+   "variables": {
+      "hostingPlanName": "app-service-plan",
+      "repo": "https://github.com/benc-uk/goat-bot.git",
+      "visionApiRegion": "westeurope"
+   },
+   "resources": [
+      {
+         "type": "Microsoft.Web/serverfarms",
+         "apiVersion": "2015-08-01",
+         "name": "[variables('hostingPlanName')]",
+         "location": "[resourceGroup().location]",
+         "sku": {
+            "name": "[parameters('appSizingTier')]",
+            "capacity": 1
+         }
+      },
+      {
+         "type": "Microsoft.Web/sites",
+         "apiVersion": "2015-08-01",
+         "name": "[parameters('webSiteName')]",
+         "location": "[resourceGroup().location]",
+         "dependsOn": [
+            "[concat('Microsoft.Web/serverfarms/', variables('hostingPlanName'))]"
+         ],
+         "properties": {
+            "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
+            "siteConfig": {
+               "appSettings": [
+                  {
+                     "name": "BOT_WEBCHAT_SECRET",
+                     "value": "!changeme!"
+                  },
+                  {
+                     "name": "PROJECT",
+                     "value": "site"
+                  }
+               ]
+            }      
+         },
+         "resources": [
+            {
+               "apiVersion": "2015-08-01",
+               "name": "web",
+               "type": "sourcecontrols",
+               "dependsOn": [
+                  "[resourceId('Microsoft.Web/Sites', parameters('webSiteName'))]"
+               ],
+               "properties": {
+                  "RepoUrl": "[variables('repo')]",
+                  "branch": "master",
+                  "IsManualIntegration": true
+               }
+            }
+         ]
+      },
+      {
+         "type": "Microsoft.Web/sites",
+         "apiVersion": "2015-08-01",
+         "name": "[parameters('botName')]",
+         "location": "[resourceGroup().location]",
+         "dependsOn": [
+            "[concat('Microsoft.Web/serverfarms/', variables('hostingPlanName'))]"
+         ],
+         "properties": {
+            "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
+            "siteConfig": {
+               "appSettings": [
+                  {
+                     "name": "MICROSOFT_APP_ID",
+                     "value": "[parameters('botAppId')]"
+                  },
+                  {
+                     "name": "MICROSOFT_APP_PASSWORD",
+                     "value": "[parameters('botAppPassword')]"
+                  },
+                  {
+                     "name": "MICROSOFT_VISION_API_KEY",
+                     "value": "32423423"
+                  },
+                  {
+                     "name": "MICROSOFT_VISION_API_REGION",
+                     "value": "[variables('visionApiRegion')]"
+                  },                                                      
+                  {
+                     "name": "PROJECT",
+                     "value": "bot"
+                  }
+               ]
+            }      
+         },
+         "resources": [
+            {
+               "apiVersion": "2015-08-01",
+               "name": "web",
+               "type": "sourcecontrols",
+               "dependsOn": [
+                  "[resourceId('Microsoft.Web/Sites', parameters('webSiteName'))]"
+               ],
+               "properties": {
+                  "RepoUrl": "[variables('repo')]",
+                  "branch": "master",
+                  "IsManualIntegration": true
+               }
+            }
+         ]
+      }      
+   ],
+   "outputs": {
+      "siteUrl": {
+         "type": "string",
+         "value": "[reference(parameters('webSiteName')).hostNames[0]]"
+      },
+      "botEndpoint": {
+         "type": "string",
+         "value": "[concat(reference(parameters('botName')).hostNames[0], '/api/messages')]"
+      }      
+   }
+}
