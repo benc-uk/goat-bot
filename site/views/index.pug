@@ -37,7 +37,7 @@ block content
 
   div(class="chat")
     if token
-      iframe(src='https://webchat.botframework.com/embed/goat-bot-bc?t='+token)
+      iframe(src='https://webchat.botframework.com/embed/' + handle + '?t=' + token)
     else
       h3(style='color:red') Error fetching bot webchat token! 
         p #{error}

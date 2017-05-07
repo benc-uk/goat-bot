@@ -5,6 +5,7 @@ var request = require('request');
 // This loads the environment variables from the .env file
 require('dotenv-extended').load();
 var secret = process.env.BOT_WEBCHAT_SECRET;
+var handle = process.env.BOT_HANDLE;
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -28,7 +29,7 @@ router.get('/', function (req, res, next) {
       }
     }
     // Render the page!
-    res.render('index', { title: 'Goat Info Central', token: tok, error: err});
+    res.render('index', { title: 'Goat Info Central', token: tok, error: err, handle: handle });
   });
 });
 
