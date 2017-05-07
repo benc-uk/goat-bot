@@ -88,7 +88,7 @@
          "location": "[resourceGroup().location]",
          "dependsOn": [
             "[concat('Microsoft.Web/serverfarms/', variables('hostingPlanName'))]",
-            "[concat('Microsoft.CognitiveServices/accounts', variables('hostingPlanName'))]"
+            "[concat('Microsoft.CognitiveServices/accounts', variables('visionApiName'))]"
          ],
          "properties": {
             "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
