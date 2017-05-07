@@ -1,8 +1,39 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1 🐐 #{title} 🐐
+  div(class='page')
+    h3 Thanks for logging onto #{title} the primary source of online goat data since 1995
+    p(align='center')
+      img(src='img/lines.gif')
+    p Everything you need to know about goats is all hosted right here in digital cyberspace! Wow! 
+    p Check out all our great hyperlinks, but most of all do not miss our amazing interactive GOAT BOT! Chat away with Goat Bot right now!
+
+    ul
+      li 
+        a Goat photo gallery
+      li 
+        a Famous goats
+      li 
+        a Goats through history
+      li 
+        a Goat music    
+
+    p(align='center')
+      img(src='img/lines.gif')
+
+    table
+      tr
+        td 
+          img(src='img/goat-l.gif')
+        td
+          p Best viewed with
+          img(src='img/ie.gif' width='180px')
+        td 
+          img(src='img/goat-r.gif')
+  hr
+  small Goat Info Central &copy; 2017 Ben Coleman 
+    a(href='https://github.com/benc-uk/goat-bot') github
   div(class="chat")
     if token
       iframe(src='https://webchat.botframework.com/embed/goat-bot-bc?t='+token)

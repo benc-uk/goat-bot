@@ -1,17 +1,33 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  color: #
+  padding: 20px;
+  font: 19px "Courier New", Courier, monospace;
+  color: lightgray;
+  background-color: #222222;
 }
 
 a {
-  color: #00B7FF;
+  color: white;
 }
 
+h1 {
+  background-color: #0072C6;
+  padding: 20px;
+  color: white;
+  border-radius: 10px;
+}
+
+h3, ul {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.page {
+  width: 60%;
+}
 .chat {
   right:0; 
   bottom: 0; 
   position: absolute;
+  background-color: white;
 }
 
 iframe {

@@ -20,25 +20,6 @@ var bot = new builder.UniversalBot(connector);
 var intents = new builder.IntentDialog();
 bot.dialog('/', intents);
 
-intents.matches(/(fact|info)/i, [
-    function (session) {
-        session.beginDialog('/fact');
-    }  
-]);
-
-intents.matches(/(help)/i, [
-    function (session) {
-        session.beginDialog('/help');
-    }  
-]);
-
-intents.matches(/(photo|picture)/i, [
-    function (session) {
-        session.beginDialog('/photo');
-    }  
-]);
-
-
 intents.onDefault([
     function (session, results) {
         if (hasImageAttachment(session)) {
@@ -58,6 +39,24 @@ intents.onDefault([
             session.send('🐐 Hello and welcome to **Goat Bot!** 🐐  \nYour friendly digital assistant for all your online goat requirements.  \nTry asking for *help* if you are stuck.');
         }
     }
+]);
+
+intents.matches(/(fact|info)/i, [
+    function (session) {
+        session.beginDialog('/fact');
+    }  
+]);
+
+intents.matches(/(help)/i, [
+    function (session) {
+        session.beginDialog('/help');
+    }  
+]);
+
+intents.matches(/(photo|picture)/i, [
+    function (session) {
+        session.beginDialog('/photo');
+    }  
 ]);
 
 bot.dialog('/fact', [
@@ -80,7 +79,7 @@ bot.dialog('/help', [
 
 bot.dialog('/photo', [
     function (session, args, next) {
-        sendGoat(session, './images/goat1.jpg', 'image/jpeg', 'goat1.jpg');
+        sendGoatPhoto(session, "OK, here's a great goat photo for you from our **Goat Gallery**, enjoy!");
         session.endDialog();
     }
 ]);
@@ -115,7 +114,7 @@ var goatFactsDB = [
     "Around the globe more people eat and drink meat and milk from goats than any other animal"
 ]
 
-function sendGoat(session) {
+function sendGoatPhoto(session, text) {
     var goat_count = fs.readdirSync('./images/').length;
     r = getRandomInt(1, goat_count + 1);
 
@@ -132,6 +131,7 @@ function sendGoat(session) {
                 contentType: 'image/jpeg',
                 name: "Goat Photo " + r
             });
+        msg.text(text);
 
         session.send(msg);
     });

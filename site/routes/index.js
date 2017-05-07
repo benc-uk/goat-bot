@@ -28,7 +28,7 @@ router.get('/', function (req, res, next) {
       }
     }
     // Render the page!
-    res.render('index', { title: 'Goat.info', token: tok, error: err});
+    res.render('index', { title: 'Goat Info Central', token: tok, error: err});
   });
 });
 
