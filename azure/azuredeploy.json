@@ -141,7 +141,8 @@
             "name": "[variables('visionApiSku')]"
          },
          "kind": "ComputerVision",
-         "location": "[variables('visionApiRegion')]"
+         "location": "[variables('visionApiRegion')]",
+         "properties": {}
       }
    ],
    "outputs": {
