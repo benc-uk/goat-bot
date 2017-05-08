@@ -117,7 +117,7 @@ var goatFactsDB = [
 function sendGoatPhoto(session, text) {
     var goat_count = fs.readdirSync('./images/').length;
     r = getRandomInt(1, goat_count + 1);
-    session.send("Random goat "+r+" of "+goat_count);
+    //session.send("Random goat "+r+" of "+goat_count);
 
     fs.readFile('./images/goat' + r + '.jpg', function (err, data) {
         if (err) {
@@ -125,7 +125,6 @@ function sendGoatPhoto(session, text) {
         }
 
         var base64 = Buffer.from(data).toString('base64');
-
         var msg = new builder.Message(session)
             .addAttachment({
                 contentUrl: util.format('data:%s;base64,%s', 'image/jpeg', base64),
