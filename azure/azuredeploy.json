@@ -3,16 +3,24 @@
    "contentVersion": "1.0.0.0",
    "parameters": {
       "webSiteName": {
-         "type": "string"
+         "type": "string",
+         "metadata": {"description": "Name of the new Azure web app (for the website) to be created"}
       },
-      "botName": {
-         "type": "string"
+      "botSiteName": {
+         "type": "string",
+         "metadata": {"description": "Name of the new Azure web app (for the bot) to be created"}
       },
+      "botHandle": {
+         "type": "string",
+         "metadata": {"description": "Handle of your existing bot"}
+      },      
       "botAppId": {
-         "type": "string"
+         "type": "string",
+         "metadata": {"description": "Existing MS app ID for your bot"}
       },
       "botAppPassword": {
-         "type": "string"
+         "type": "string",
+         "metadata": {"description": "Existing MS app password for your bot"}
       },
       "appSizingTier": {
          "type": "string",
@@ -21,7 +29,8 @@
             "B1",
             "B2",
             "B3"
-         ]
+         ],
+         "metadata": {"description": "Size of the app service hosting the web apps, B1 is sufficient for demos"}
       }
    },
    "variables": {
@@ -61,7 +70,7 @@
                   },
                   {
                      "name": "BOT_HANDLE",
-                     "value": "__changeme__"
+                     "value": "[parameters('botHandle')]"
                   },
                   {
                      "name": "PROJECT",
@@ -136,7 +145,7 @@
                "name": "web",
                "type": "sourcecontrols",
                "dependsOn": [
-                  "[resourceId('Microsoft.Web/Sites', parameters('botName'))]"
+                  "[resourceId('Microsoft.Web/Sites', parameters('botSiteName'))]"
                ],
                "properties": {
                   "RepoUrl": "[variables('repo')]",
