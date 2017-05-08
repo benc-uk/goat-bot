@@ -1,0 +1,7 @@
+{
+    "itemDisplayName": "Deploy Goat Bot & site to Azure",
+    "description": "Bot Framework demo deployed into Azure Web Apps running under Node.js. Full details here https://github.com/benc-uk/goat-bot",
+    "summary": "Deploy two Web Apps and Cognitive vision API account for Bot Framework demo",
+    "githubUsername": "benc-uk",
+    "dateUpdated": "2017-05-08"
+}
