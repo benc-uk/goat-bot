@@ -12,6 +12,9 @@ The Goat Bot demonstrates several capabilities:
 - Bot Framework web chat client integration
 - Hosting in Azure platform services (PaaS web apps) via templates and automated deployment 
 
+## Screenshots
+![chat1](chat1.png) ![chat2](chat2.png)
+
 ## Pre Requisites 
 Register a new bot and associated Microsoft app id. Do this from the Bot Framework site  
 ### [https://dev.botframework.com/bots/new](https://dev.botframework.com/bots/new)  
