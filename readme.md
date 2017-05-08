@@ -2,8 +2,8 @@
 
 A silly but functional demo of the Microsoft Bot Framework.  
 This project consists of two apps and their source:
-- **Site** - A simple Node.js Express site to host the goat bot web chat client.
-- **Bot** - Main bot written using the Bot Framework SDK also in Node.js
+- **Bot** - Main restful bot application written using the Bot Framework SDK and Node.js
+- **Site** - A simple Node.js Express site called 'Goat Info Central' to host the goat bot web chat client.
 
 ## Goat Bot Functionality
 The Goat Bot demonstrates several capabilities:

@@ -1,6 +1,6 @@
 # Goat Bot Site
 
-This is a simple (and stupid) Node.js Express site to host the goat bot web chat client.
+This is a simple Node.js Express site called 'Goat Info Central' it's only purpose is to host the goat bot web chat client.
 
 ### Configuration
 
