@@ -117,6 +117,7 @@ var goatFactsDB = [
 function sendGoatPhoto(session, text) {
     var goat_count = fs.readdirSync('./images/').length;
     r = getRandomInt(1, goat_count + 1);
+    session.send("Random goat "+r+" of "+goat_count);
 
     fs.readFile('./images/goat' + r + '.jpg', function (err, data) {
         if (err) {
