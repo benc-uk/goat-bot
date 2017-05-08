@@ -57,11 +57,11 @@
                "appSettings": [
                   {
                      "name": "BOT_WEBCHAT_SECRET",
-                     "value": "!changeme!"
+                     "value": "__changeme__"
                   },
                   {
                      "name": "BOT_HANDLE",
-                     "value": "!changeme!"
+                     "value": "__changeme__"
                   },
                   {
                      "name": "PROJECT",
