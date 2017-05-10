@@ -65,7 +65,7 @@ bot.dialog('/fact', [
         
         var r = getRandomInt(0, goatFactsDB.length)
         var fact = goatFactsDB[r];
-        session.send("\n** Goat fact \#" + r + ": " + fact + "**");
+        session.send("\n**Goat fact \#" + r + ": " + fact + "**");
         session.endDialog();
     }
 ]);
