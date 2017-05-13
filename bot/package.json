@@ -10,7 +10,7 @@
   "license": "Apache-2.0",
   "repository": "http://github",
   "dependencies": {
-    "botbuilder": "^3.7.0",
+    "botbuilder": "^3.8.1",
     "dotenv-extended": "^1.0.4",
     "needle": "^1.4.3",
     "restify": "^4.3.0"
